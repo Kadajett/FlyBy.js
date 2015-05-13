@@ -1,34 +1,40 @@
-/*
- * FlyBy.js
- * https://github.com/kadajett/flyBy.js
- *
- * Copyright (c) 2015 Jeremy Stover
- * Licensed under the MIT license.
- */
-(function(window) {
-    "use strict";
+var FlyBy = FlyBy || {};
 
-    // internal API
-    var _ = {
-        version: "<%= pkg.version %>",
-        internal: 'property'
-    };
+//begin private closure
+(function() {
+    'use strict';
 
-    // external API
-    var flyBy = {
-        _: _,// comment to hide internal API
-        external: function() {
-            return 'flyBy v'+_.version;
+    this.Engine = famous.core.Engine;
+    this.Modifier = famous.core.Modifier;
+    this.Transform = famous.core.Transform;
+    this.Surface = famous.core.Surface;
+    this.Lightbox = famous.views.Lightbox;
+
+    // Set up the main container
+    this.context = FlyBy.Engine.createContext();
+    this.context.setPerspective(1000);
+    this.context.add(new this.Surface({
+        size: [undefined, undefined],
+        properties: {
+            backgroundColor: "#333",
+            zIndex: -10
         }
-    };
+    }))
 
-    // export flyBy
-    if (typeof define === 'function' && define.amd) {
-        define(function(){ return flyBy; });
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = flyBy;
-    } else {
-        window.flyBy = flyBy;
+    this.Page = function Page() {
+        var page = this;
+        // If the user is NOT using the 'new' keyword
+        if (!(page instanceof Page)) {
+            return new Page();
+        }
+
+        page.view = new FlyBy.Lightbox();
+        page.view.resetOptions = function(){
+          this.setOptions(Lightbox.DEFAULT_OPTIONS);
+        }
+
+        page.routeTo = function(){
+          FlyBy.context.add(page.view);
+        }
     }
-
-}(window));
+}).call(FlyBy);
