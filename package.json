@@ -1,0 +1,49 @@
+{
+  "name": "flyBy",
+  "title": "FlyBy.js",
+  "description": "FlyBy could really use a good description.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kadajett/flyBy.js",
+  "author": {
+    "name": "Jeremy Stover",
+    "email": "jeremy.ryan.stover@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kadajett/flyBy.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kadajett/flyBy.js/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/kadajett/flyBy.js/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "dist/flyBy.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt jshint qunit --verbose"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-qunit": "~0.3.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.5",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "~0.5.2",
+    "grunt-cli": "~0.1.9",
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "flyby",
+    "famou.us",
+    "mvc",
+    "oop"
+  ]
+}
